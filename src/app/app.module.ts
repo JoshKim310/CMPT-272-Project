@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     PigComponent,
     TableComponent,
-    AddFormComponent
+    AddFormComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

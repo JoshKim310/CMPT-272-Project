@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-add-form',
@@ -12,19 +12,19 @@ export class AddFormComponent implements OnInit{
 
   constructor() {
     let FormControls = {
-      name: new FormControl(''),
-      phone_num: new FormControl(''),
-      breed: new FormControl(''),
-      pid: new FormControl(''),
-      location: new FormControl(''),
-      notes: new FormControl(''),
+      name: new FormControl('', [Validators.required]),
+      phone_num: new FormControl('', [Validators.required]),
+      breed: new FormControl('', [Validators.required]),
+      pid: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+      notes: new FormControl('', [Validators.required]),
 
     }
     this.addForm = new FormGroup(FormControls)
   }
-
-  onSubmit(values: string) {
-    console.log(values)
+  
+  onSubmit() {
+    console.log(this.addForm.value)
     
   }
 
