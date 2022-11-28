@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Add Form</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Breed</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Pid</mat-label>
+        <input matInput>
+    </mat-form-field><mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <mat-select>
+            <mat-option value="Vancouver">Vancouver</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Notes</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Close</button>
+    <button mat-raised-button color="accent">Submit</button>
+</div>
