@@ -16,6 +16,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common'
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { DatePipe } from '@angular/common'
     MatInputModule,
     MatSelectModule,
     HttpClientModule,
-    DatePipe
+    DatePipe,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

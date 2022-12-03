@@ -7,13 +7,13 @@ import * as L from 'leaflet';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewChecked {
+export class MapComponent implements AfterViewInit {
 
   private map;
 
   constructor() { }
 
-  ngAfterViewChecked(): void {
+  ngAfterViewInit(): void {
     this.map = L.map('map').setView([49.24, -123.12], 11);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

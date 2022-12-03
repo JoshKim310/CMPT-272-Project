@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { timestamp } from 'rxjs';
 import { ApiServiceService } from '../api-service.service';
+import { MatDialogRef } from '@angular/material/dialog'
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-form',
@@ -12,7 +13,9 @@ export class AddFormComponent implements OnInit{
 
   addForm: FormGroup
 
-  constructor(private api: ApiServiceService) {
+  constructor(private api: ApiServiceService, private datepipe: DatePipe, private dialogRef: MatDialogRef<AddFormComponent>) {
+    const date = new Date();
+
     let FormControls = {
       name: new FormControl('', [Validators.required]),
       phone_num: new FormControl('', [Validators.required]),
@@ -20,7 +23,7 @@ export class AddFormComponent implements OnInit{
       pid: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
       notes: new FormControl('', [Validators.required]),
-      time: new FormControl(new Date())
+      time: new FormControl(this.datepipe.transform(date, 'yyyy-MM-dd (h:mm:ss a)'))
     }
     this.addForm = new FormGroup(FormControls)
   }
@@ -29,8 +32,10 @@ export class AddFormComponent implements OnInit{
     console.log(this.addForm.value)
     if(this.addForm.valid) {
       this.api.posta(this.addForm.value).subscribe({
-        next:(res)=>{
+        next:(data)=>{
           alert("Product added successfully")
+          this.addForm.reset();
+          this.dialogRef.close();
         },
         error:()=>{
           alert("Error while adding product")
