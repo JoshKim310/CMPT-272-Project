@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { timestamp } from 'rxjs';
 import { ApiServiceService } from '../api-service.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class AddFormComponent implements OnInit{
       pid: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
       notes: new FormControl('', [Validators.required]),
-
+      time: new FormControl(new Date())
     }
     this.addForm = new FormGroup(FormControls)
   }
