@@ -16,6 +16,10 @@ export class ApiServiceService {
     return this.http.get<any>("https://272.selfip.net/apps/pFRJTg1tmV/collections/kXf3ecnk1llqfIHIHCdZ567vtHGRtc/documents/");
   }
 
+  put(id: string, data: string) {
+    return this.http.put<any>("https://272.selfip.net/apps/pFRJTg1tmV/collections/kXf3ecnk1llqfIHIHCdZ567vtHGRtc/documents/"+id, data);
+  }
+
   delete(id: string) {
     return this.http.delete<any>("https://272.selfip.net/apps/pFRJTg1tmV/collections/kXf3ecnk1llqfIHIHCdZ567vtHGRtc/documents/"+id);
   }

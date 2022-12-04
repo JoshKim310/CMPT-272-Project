@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>More Info</h1>
+<div mat-dialog-content>
+    Name: {{extraData.name}} <br>
+    Phone #: {{extraData.phone_num}} <br>
+    Breed: {{extraData.breed}} <br>
+    Pid: {{extraData.pid}} <br>
+    Location: {{extraData.location}} <br>
+    Latitude: {{extraData.latitude}} <br>
+    Longitude: {{extraData.longitude}} <br>
+    Date/Time: {{extraData.time}} <br>
+    Notes: {{extraData.notes}} <br>
+    Status: {{extraData.status}}
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Close</button>
+</div>

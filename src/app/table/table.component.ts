@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { AddFormComponent } from '../add-form/add-form.component';
+import { InfoPopupComponent } from '../info-popup/info-popup.component';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,7 @@ import { AddFormComponent } from '../add-form/add-form.component';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['location', 'name', 'time', 'pid', 'action'];
+  displayedColumns: string[] = ['location', 'name', 'time', 'status', 'action1', 'action2', 'action3'];
   dataSource!: MatTableDataSource<any>;
   pigs: string[] = [];
 
@@ -64,8 +65,24 @@ export class TableComponent implements OnInit {
     })
   }
 
+  moreInfo(row: any) {
+    this.dialog.open(InfoPopupComponent,{
+      width: '40%',
+      data:row
+    })
+  }
+
+  retrieve(row: any) {
+    console.log(row)
+    row.status = 'Retrieve';
+    this.api.put(row.id, row).subscribe({
+      next:(res)=>{
+        alert('update successful');
+      }
+    })
+  }
+
   ngOnInit(): void {
-    console.log('YOOOOOOOOOOOOOOOO')
     this.getAll();
   }
 }
