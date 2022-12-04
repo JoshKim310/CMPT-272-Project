@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common'
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -41,9 +43,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HttpClientModule,
     DatePipe,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, TableComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

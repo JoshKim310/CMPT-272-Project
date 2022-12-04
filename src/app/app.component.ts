@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { AddFormComponent } from './add-form/add-form.component'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'project';
 
   constructor(private dialog: MatDialog) {
 
   }
+  ngOnInit(): void {
 
-  openDialog() {
-    this.dialog.open(AddFormComponent, {
-      width: '40%'
-    });
   }
 }

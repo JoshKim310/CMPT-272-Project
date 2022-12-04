@@ -23,7 +23,9 @@ export class AddFormComponent implements OnInit{
       pid: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
       notes: new FormControl('', [Validators.required]),
-      time: new FormControl(this.datepipe.transform(date, 'yyyy-MM-dd (h:mm:ss a)'))
+      id: new FormControl(this.datepipe.transform(date, 'yyyyMMddhmmssa')),
+      time: new FormControl(this.datepipe.transform(date, 'yyyy-MM-dd (h:mm:ss a)')),
+      status: new FormControl('Ready for pickup')
     }
     this.addForm = new FormGroup(FormControls)
   }
@@ -31,11 +33,11 @@ export class AddFormComponent implements OnInit{
   onSubmit() {
     console.log(this.addForm.value)
     if(this.addForm.valid) {
-      this.api.posta(this.addForm.value).subscribe({
+      this.api.post(this.addForm.value).subscribe({
         next:(data)=>{
           alert("Product added successfully")
           this.addForm.reset();
-          this.dialogRef.close();
+          this.dialogRef.close('save');
         },
         error:()=>{
           alert("Error while adding product")
@@ -45,7 +47,7 @@ export class AddFormComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    
   }
 
 }
