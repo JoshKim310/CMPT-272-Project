@@ -20,9 +20,7 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: ApiServiceService) {
-
-  }
+  constructor(private dialog: MatDialog, private api: ApiServiceService) {}
 
   openDialog() {
     this.dialog.open(AddFormComponent, {
@@ -38,7 +36,6 @@ export class TableComponent implements OnInit {
     this.api.get().subscribe({
       next: (data)=>{
         console.log(data);
-        console.log('PIGS', this.pigs)
         for(let i=0; i<data.length; i++){
           this.pigs.push(data[i].data)
         }
@@ -73,7 +70,6 @@ export class TableComponent implements OnInit {
   }
 
   retrieve(row: any) {
-    console.log(row)
     row.status = 'Retrieve';
     this.api.put(row.id, row).subscribe({
       next:(res)=>{

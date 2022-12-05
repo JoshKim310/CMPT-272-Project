@@ -17,7 +17,8 @@ export class ApiServiceService {
   }
 
   put(id: string, data: string) {
-    return this.http.put<any>("https://272.selfip.net/apps/pFRJTg1tmV/collections/kXf3ecnk1llqfIHIHCdZ567vtHGRtc/documents/"+id, data);
+    console.log(data)
+    return this.http.put<any>("https://272.selfip.net/apps/pFRJTg1tmV/collections/kXf3ecnk1llqfIHIHCdZ567vtHGRtc/documents/"+id, {"key": id, "data": data});
   }
 
   delete(id: string) {

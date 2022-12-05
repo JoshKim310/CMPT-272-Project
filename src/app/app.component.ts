@@ -7,7 +7,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'project';
+  title = 'Pig Tracker';
 
   constructor(private dialog: MatDialog) {
 

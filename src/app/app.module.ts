@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { InfoPopupComponent } from './info-popup/info-popup.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -46,7 +47,8 @@ import { InfoPopupComponent } from './info-popup/info-popup.component';
     DatePipe,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatSortModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
