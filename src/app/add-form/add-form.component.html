@@ -7,7 +7,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Phone Number</mat-label>
-            <input formControlName="phone_num" matInput>
+            <input type="number" formControlName="phone_num" matInput>
             <mat-hint>Must be a number</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -20,18 +20,16 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Location</mat-label>
-            <mat-select formControlName="location">
-                <mat-option value="Vancouver">Vancouver</mat-option>
-            </mat-select>
+            <input formControlName="location" matInput>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Latitude</mat-label>
-            <input formControlName="latitude" matInput>
+            <input type="number" formControlName="latitude" matInput>
             <mat-hint>Must be a number</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Longitude</mat-label>
-            <input formControlName="longitude" matInput>
+            <input type="number" formControlName="longitude" matInput>
             <mat-hint>Must be a number</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">

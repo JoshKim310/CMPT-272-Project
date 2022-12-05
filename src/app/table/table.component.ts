@@ -6,8 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { AddFormComponent } from '../add-form/add-form.component';
 import { InfoPopupComponent } from '../info-popup/info-popup.component';
-import { PopupService } from '../popup.service';
-import { MarkerService } from '../marker.service';
 import { HashService } from '../hash.service';
 
 @Component({
@@ -19,17 +17,12 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['location', 'name', 'time', 'status', 'action1', 'action2', 'action3'];
   dataSource!: MatTableDataSource<any>;
   pigs: string[] = [];
-  private map;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  //@ViewChild(MapComponent) map!: MapComponent;
-  
+  @ViewChild(MatSort) sort!: MatSort;  
 
   constructor(private dialog: MatDialog,
               private api: ApiServiceService,
-              private popupService: PopupService,
-              private markerService: MarkerService,
               private hashService: HashService) {}
  
   openDialog() {
@@ -45,7 +38,6 @@ export class TableComponent implements OnInit {
   getAll() {
     this.api.get().subscribe({
       next: (data)=>{
-        console.log(data);
         for(let i=0; i<data.length; i++){
           this.pigs.push(data[i].data)
         }
@@ -67,7 +59,6 @@ export class TableComponent implements OnInit {
       if(data.Digest == "84892b91ef3bf9d216bbc6e88d74a77c") {
         this.api.delete(id).subscribe({
         next: (res)=>{
-          alert('delete successful')
           this.getAll();
         },
         error:()=>{
@@ -101,7 +92,6 @@ export class TableComponent implements OnInit {
     row.status = 'Retrieved';
     this.api.put(row.id, row).subscribe({
       next:(res)=>{
-        alert('update successful');
       }
     })
   }
