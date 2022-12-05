@@ -6,10 +6,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { AddFormComponent } from '../add-form/add-form.component';
 import { InfoPopupComponent } from '../info-popup/info-popup.component';
-import * as L from 'leaflet';
 import { PopupService } from '../popup.service';
 import { MarkerService } from '../marker.service';
-import { MapComponent } from '../map/map.component';
+import { HashService } from '../hash.service';
 
 @Component({
   selector: 'app-table',
@@ -30,7 +29,8 @@ export class TableComponent implements OnInit {
   constructor(private dialog: MatDialog,
               private api: ApiServiceService,
               private popupService: PopupService,
-              private markerService: MarkerService) {}
+              private markerService: MarkerService,
+              private hashService: HashService) {}
  
   openDialog() {
     this.dialog.open(AddFormComponent, {
@@ -60,22 +60,40 @@ export class TableComponent implements OnInit {
     })
   }
 
-  deletePig(id: string) {
-    this.api.delete(id).subscribe({
-      next: (res)=>{
-        alert('delete successful')
-        this.getAll();
-      },
-      error:()=>{
-        alert('error while delete')
+  deletePig(id: string) {    
+    let pass = prompt("Enter password:");
+    this.hashService.get(pass)
+    .subscribe((data: any)=>{
+      if(data.Digest == "84892b91ef3bf9d216bbc6e88d74a77c") {
+        this.api.delete(id).subscribe({
+        next: (res)=>{
+          alert('delete successful')
+          this.getAll();
+        },
+        error:()=>{
+          alert('error while delete')
+        }
+        })
+      } else {
+        alert("Incorrect Password")
       }
     })
+
+    
   }
 
   moreInfo(row: any) {
-    this.dialog.open(InfoPopupComponent,{
-      width: '40%',
-      data:row
+    let pass = prompt("Enter password:");
+    this.hashService.get(pass)
+    .subscribe((data: any)=>{
+      if(data.Digest == "84892b91ef3bf9d216bbc6e88d74a77c") {
+        this.dialog.open(InfoPopupComponent,{
+        width: '40%',
+        data:row
+        })
+      } else {
+        alert("Incorrect Password")
+      }
     })
   }
 
