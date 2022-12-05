@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PigComponent } from './pig/pig.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +28,6 @@ import { MarkerService } from './marker.service';
 @NgModule({
   declarations: [
     AppComponent,
-    PigComponent,
     TableComponent,
     AddFormComponent,
     MapComponent,
