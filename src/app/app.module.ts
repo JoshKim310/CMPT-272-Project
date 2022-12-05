@@ -21,6 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { InfoPopupComponent } from './info-popup/info-popup.component';
 import { MatSortModule } from '@angular/material/sort';
+import { PopupService } from './popup.service';
+import { MarkerService } from './marker.service';
 
 
 
@@ -48,9 +50,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSortModule
+    MatSortModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, MapComponent, PopupService, MarkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

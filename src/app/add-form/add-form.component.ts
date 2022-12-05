@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators, Form } from '@angular/forms'
 import { ApiServiceService } from '../api-service.service';
 import { MatDialogRef } from '@angular/material/dialog'
 import { DatePipe } from '@angular/common';
@@ -49,6 +49,10 @@ export class AddFormComponent implements OnInit{
         }
       })
     }
+  }
+
+  numberCheck(contorl: FormControl) {
+    
   }
 
   ngOnInit(): void {

@@ -6,6 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiServiceService } from '../api-service.service';
 import { AddFormComponent } from '../add-form/add-form.component';
 import { InfoPopupComponent } from '../info-popup/info-popup.component';
+import * as L from 'leaflet';
+import { PopupService } from '../popup.service';
+import { MarkerService } from '../marker.service';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-table',
@@ -16,12 +20,18 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['location', 'name', 'time', 'status', 'action1', 'action2', 'action3'];
   dataSource!: MatTableDataSource<any>;
   pigs: string[] = [];
+  private map;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  //@ViewChild(MapComponent) map!: MapComponent;
+  
 
-  constructor(private dialog: MatDialog, private api: ApiServiceService) {}
-
+  constructor(private dialog: MatDialog,
+              private api: ApiServiceService,
+              private popupService: PopupService,
+              private markerService: MarkerService) {}
+ 
   openDialog() {
     this.dialog.open(AddFormComponent, {
       width: '40%'
@@ -70,7 +80,7 @@ export class TableComponent implements OnInit {
   }
 
   retrieve(row: any) {
-    row.status = 'Retrieve';
+    row.status = 'Retrieved';
     this.api.put(row.id, row).subscribe({
       next:(res)=>{
         alert('update successful');

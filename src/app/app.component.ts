@@ -9,9 +9,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 export class AppComponent implements OnInit{
   title = 'Pig Tracker';
 
-  constructor(private dialog: MatDialog) {
-
-  }
+  constructor(private dialog: MatDialog) {}
+  
   ngOnInit(): void {
 
   }
